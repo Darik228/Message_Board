@@ -16,12 +16,12 @@ class BaseModel(models.Model):
 
 
 class Ordering(BaseModel):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, )
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    payment_transaction = models.OneToOneField('PaymentTransaction', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, verbose_name='Покупатель')
+    payment_transaction = models.OneToOneField('PaymentTransaction', on_delete=models.CASCADE, verbose_name='Транзакция')
 
     def __str__(self):
-        return f"Заказ - {self.product}"
+        return f"Заказ продукта - {self.product}"
 
     class Meta:
         verbose_name = 'Заказ'
